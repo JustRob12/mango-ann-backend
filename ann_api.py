@@ -18,7 +18,9 @@ os.makedirs(IMAGE_TMP_FOLDER, exist_ok=True)
 
 
 # === LOAD MODEL AND SCALER AT STARTUP ===
-model_ann = load_model(MODEL_PATH)
+# We set compile=False because we only need the model for prediction,
+# not for further training or evaluating with original loss/metrics.
+model_ann = load_model(MODEL_PATH, compile=False)
 scaler = joblib.load(SCALER_PATH)
 
 
